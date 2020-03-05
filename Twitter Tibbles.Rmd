@@ -37,11 +37,7 @@ readRenviron("~/.Renviron")
 
 ```{r scrape twitter concussion}
 
-# Deciding on what columns from search_tweets I really need. I am thinking
-# user_id, created_at, screen_name, text, is_quote, is_retweet, retweet_count,
-# favorite_count, quote_count, reply_count, and hashtags. Could full_join the
-# tibbles from all the sports to save from each set of dates, but then need to
-# make a new identifying column for each sport.
+# Can run all of the code below to scrape twitter for any given day
 
 rugby_tweets <- search_tweets("rugby AND concussion", n = 1000, include_rts = FALSE) %>%
   select(user_id, 
@@ -99,13 +95,7 @@ hockey_tweets <- search_tweets("hockey AND concussion", n = 1000, include_rts = 
 
 ```{r}
 
-# Decided I wanted to save multiple tibbles of data from when I run search_tweet
-# because it will re-scrape twitter for only 7 day chunks. Talked with Mitchell
-# at study hall and found out how to save different dates twitter_search results
-# as a RDS so then can access them later past 7 days out. Figured out how to
-# create the RDS documents, so going to create a new repo and save this code
-# into that so everytime I run the code chunk it will save to that repo and
-# file, but it will be the same code as this.
+# Remeber to change the dates for all the below RDS documents 
 
 file.create("rugby_3_5_20.RDS")
 saveRDS(rugby_tweets, file = "rugby_3_5_20.RDS")
