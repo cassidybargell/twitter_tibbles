@@ -97,25 +97,25 @@ hockey_tweets <- search_tweets("hockey AND concussion", n = 1000, include_rts = 
 
 # Remeber to change the dates for all the below RDS documents 
 
-file.create("rugby_3_5_20.RDS")
-saveRDS(rugby_tweets, file = "rugby_3_5_20.RDS")
+file.create("rugby_3_20_20.RDS")
+saveRDS(rugby_tweets, file = "rugby_3_20_20.RDS")
 
-rugbytweets <- readRDS("rugby_3_5_20.RDS")
+rugbytweets <- readRDS("rugby_3_20_20.RDS")
 
-file.create("football_3_5_20.RDS")
-saveRDS(football_tweets, file = "football_3_5_20.RDS")
+file.create("football_3_20_20.RDS")
+saveRDS(football_tweets, file = "football_3_20_20.RDS")
 
-footballtweets <- readRDS("football_3_5_20.RDS")
+footballtweets <- readRDS("football_3_20_20.RDS")
 
-file.create("soccer_3_5_20.RDS")
-saveRDS(rugby_tweets, file = "soccer_3_5_20.RDS")
+file.create("soccer_3_20_20.RDS")
+saveRDS(soccer_tweets, file = "soccer_3_20_20.RDS")
 
-soccertweets <- readRDS("soccer_3_5_20.RDS")
+soccertweets <- readRDS("soccer_3_20_20.RDS")
 
-file.create("hockey_3_5_20.RDS")
-saveRDS(hockey_tweets, file = "hockey_3_5_20.RDS")
+file.create("hockey_3_20_20.RDS")
+saveRDS(hockey_tweets, file = "hockey_3_20_20.RDS")
 
-hockeytweets <- readRDS("hockey_3_5_20.RDS")
+hockeytweets <- readRDS("hockey_3_20_20.RDS")
 ```
 
 ```{r twitter CTE}
@@ -179,25 +179,95 @@ hockey_cte_tweets <- search_tweets("hockey AND CTE", n = 1000, include_rts = FAL
 
 # Save CTE twitter tibbles
 
-file.create("rugbycte_3_5_20.RDS")
-saveRDS(rugby_cte_tweets, file = "rugbycte_3_5_20.RDS")
+file.create("rugbycte_3_20_20.RDS")
+saveRDS(rugby_cte_tweets, file = "rugbycte_3_20_20.RDS")
 
-rugbyctetweets <- readRDS("rugbycte_3_5_20.RDS")
+rugbyctetweets <- readRDS("rugbycte_3_20_20.RDS")
 
-file.create("footballcte_3_5_20.RDS")
-saveRDS(football_cte_tweets, file = "footballcte_3_5_20.RDS")
+file.create("footballcte_3_20_20.RDS")
+saveRDS(football_cte_tweets, file = "footballcte_3_20_20.RDS")
 
-footballctetweets <- readRDS("footballcte_3_5_20.RDS")
+footballctetweets <- readRDS("footballcte_3_20_20.RDS")
 
-file.create("soccercte_3_5_20.RDS")
-saveRDS(rugby_cte_tweets, file = "soccercte_3_5_20.RDS")
+file.create("soccercte_3_20_20.RDS")
+saveRDS(rugby_cte_tweets, file = "soccercte_3_20_20.RDS")
 
-soccerctetweets <- readRDS("soccercte_3_5_20.RDS")
+soccerctetweets <- readRDS("soccercte_3_20_20.RDS")
 
-file.create("hockey_3_5_20.RDS")
-saveRDS(hockey_cte_tweets, file = "hockeycte_3_5_20.RDS")
+file.create("hockey_3_20_20.RDS")
+saveRDS(hockey_cte_tweets, file = "hockeycte_3_20_20.RDS")
 
-hockeyctetweets <- readRDS("hockeycte_3_5_20.RDS")
+hockeyctetweets <- readRDS("hockeycte_3_20_20.RDS")
+```
+
+```{r}
+rugby <- search_tweets("rugby", n = 1000, include_rts = FALSE) %>%
+  select(user_id, 
+         created_at, 
+         screen_name, 
+         text, 
+         is_quote, 
+         is_retweet, 
+         retweet_count, 
+         favorite_count, 
+         quote_count, 
+         reply_count, 
+         hashtags)
+
+football <- search_tweets("football", n = 1000, include_rts = FALSE) %>%
+    select(user_id, 
+         created_at, 
+         screen_name, 
+         text, 
+         is_quote, 
+         is_retweet, 
+         retweet_count, 
+         favorite_count, 
+         quote_count, 
+         reply_count, 
+         hashtags)
+
+soccer <- search_tweets("soccer", n = 1000, include_rts = FALSE) %>% 
+  select(user_id, 
+         created_at, 
+         screen_name, 
+         text, 
+         is_quote, 
+         is_retweet, 
+         retweet_count, 
+         favorite_count, 
+         quote_count, 
+         reply_count, 
+         hashtags)
+
+hockey <- search_tweets("hockey", n = 1000, include_rts = FALSE) %>% 
+  select(user_id, 
+         created_at, 
+         screen_name, 
+         text, 
+         is_quote, 
+         is_retweet, 
+         retweet_count, 
+         favorite_count, 
+         quote_count, 
+         reply_count, 
+         hashtags)
+```
+
+```{r}
+file.create("rugby_all_3_20_20.RDS")
+saveRDS(rugby, file = "rugby_all_3_20_20.RDS")
+
+file.create("football_all_3_20_20.RDS")
+saveRDS(football, file = "football_all_3_20_20.RDS")
+
+file.create("soccer_all_3_20_20.RDS")
+saveRDS(soccer, file = "soccer_all_3_20_20.RDS")
+
+file.create("hockey_all_3_20_20.RDS")
+saveRDS(hockey, file = "hockey_all_3_20_20.RDS")
+
+hockeytweets <- readRDS("hockey_all_3_20_20.RDS")
 ```
 
 
